@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Crocodile AI | Smart Vulnerability Scanning</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern Color Scheme & Base Styles */
+        :root {
+            --primary: #0f766e; /* Teal - Crocodile theme */
+            --secondary: #0e7490; /* Cyan */
+            --light: #f0fdfa;
+            --dark: #134e4a;
+            --gray: #6b7280;
+            --light-gray: #e5e7eb;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f9fafb;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .logo i {
+            font-size: 2rem;
+        }
+        nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--primary);
+        }
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background-color: var(--dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 0 60px;
+        }
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--gray);
+        }
+
+        /* About Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+        .about-img {
+            flex: 1;
+            text-align: center;
+        }
+        .profile-img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 50%;
+            border: 5px solid var(--light);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .about-text {
+            flex: 1.5;
+        }
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        .highlight-box {
+            background: var(--light);
+            border-left: 5px solid var(--primary);
+            padding: 25px;
+            border-radius: 0 10px 10px 0;
+            margin-top: 30px;
+        }
+
+        /* Plans Section */
+        .plans {
+            background: white;
+            padding: 80px 0;
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+        .plans-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .plan-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        .plan-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.03);
+        }
+        .plan-card.featured:hover {
+            transform: scale(1.03) translateY(-10px);
+        }
+        .plan-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--secondary);
+            color: white;
+            padding: 8px 35px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .plan-icon {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .plan-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        .price span {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+        .plan-features {
+            list-style: none;
+            margin: 25px 0 35px;
+        }
+        .plan-features li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #e5e7eb;
+        }
+        .plan-features li i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        .plan-button {
+            display: block;
+            text-align: center;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .plan-button:hover {
+            background-color: var(--dark);
+        }
+        .plan-button.secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        .plan-button.secondary:hover {
+            background-color: var(--light);
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            padding: 60px 0 80px;
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 12px 25px;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        .contact-link:hover {
+            transform: translateY(-5px);
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #f0fdfa;
+        }
+        .copyright {
+            color: #a7f3d0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            nav a {
+                margin: 0 15px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .about-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .plans-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .plan-card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <i class="fas fa-shield-alt"></i> White Crocodile AI
+            </a>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#plans">Plans</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <a href="#contact" class="cta-button">Get a Demo Scan</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Enterprise Security. Made Accessible.</h1>
+            <p>White Crocodile AI delivers automated, professional vulnerability scanning for businesses of all sizes. Proactive protection starts here.</p>
+            <a href="#plans" class="cta-button">View Our Security Plans</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <div class="section-title">
+            <h2>About Me & The Mission</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-img">
+                <!-- Replace with your actual image link -->
+                <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Shashi Vadhan Reddy" class="profile-img">
+            </div>
+            <div class="about-text">
+                <h3>Hi, I'm Shashi Vadhan Reddy</h3>
+                <p>I'm a student and entrepreneur from Telangana on a mission to make the digital world safer. While balancing a full school day in Class 9, I taught myself about cybersecurity and saw how smaller businesses often lack the resources to check their online security.</p>
+                <p>That's how <strong>White Crocodile AI</strong> began—a B2B tool I built from the ground up that automates website vulnerability scanning to give businesses clear, actionable reports. My vision is to provide enterprise-level security insights that are accessible, affordable, and easy to understand.</p>
+                <div class="highlight-box">
+                    <p><i class="fas fa-quote-left"></i> I believe the best solutions come from curiosity and a willingness to start, no matter your age. This tool is just the beginning of building a more secure internet for everyone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section id="plans" class="plans">
+        <div class="container">
+            <div class="section-title">
+                <h2>Security Service Plans</h2>
+                <p>Choose the level of insight and action that fits your needs. All scans are safe, authorized, and confidential.</p>
+            </div>
+            <div class="plans-container">
+                <!-- Plan V1 -->
+                <div class="plan-card">
+                    <div class="plan-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Scan & Report</h3>
+                    <p>Comprehensive scanning with a detailed report of findings.</p>
+                    <div class="price">Custom <span>/ per scan</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Automated Vulnerability Scanning</li>
+                        <li><i class="fas fa-check"></i> Detailed PDF Report</li>
+                        <li><i class="fas fa-check"></i> Risk Level Assessment</li>
+                        <li><i class="fas fa-check"></i> 24-Hour Turnaround</li>
+                        <li><i class="fas fa-check"></i> Safe, Read-Only Process</li>
+                    </ul>
+                    <a href="#contact" class="plan-button secondary">Inquire About V1</a>
+                </div>
+
+                <!-- Plan V2 (Featured) -->
+                <div class="plan-card featured">
+                    <div class="plan-badge">MOST POPULAR</div>
+                    <div class="plan-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Scan, Report & Fix</h3>
+                    <p>Complete scanning with prioritized, actionable remediation steps.</p>
+                    <div class="price">Custom <span>/ per scan</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Everything in V1</li>
+                        <li><i class="fas fa-check"></i> <strong>Prioritized Fix Suggestions</strong></li>
+                        <li><i class="fas fa-check"></i> Technical Guidance Summary</li>
+                        <li><i class="fas fa-check"></i> Priority Email Support</li>
+                        <li><i class="fas fa-check"></i> Follow-up Rescan Discount</li>
+                    </ul>
+                    <a href="#contact" class="plan-button">Get a V2 Demo</a>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; color: var(--gray); font-size: 0.9rem;">
+                <i class="fas fa-info-circle"></i> <em>All services require a signed scanning agreement. Contact for custom enterprise pricing.</em>
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get Your Security Assessment</h2>
+                <p>Ready to see how secure your website is? Reach out to discuss a free, authorized demo scan for your business.</p>
+            </div>
+            <div class="contact-links">
+                <!-- Your Email -->
+                <a href="mailto:reddyshashivadhan@gmail.com" class="contact-link">
+                    <i class="fas fa-envelope"></i> reddyshashivadhan@gmail.com
+                </a>
+                <a href="https://github.com/yourprofile" target="_blank" class="contact-link">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-link">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+            <!-- Your Availability Note -->
+            <div style="background-color: #f0fdfa; border-left: 4px solid #0f766e; padding: 15px; margin-top: 30px; border-radius: 0 8px 8px 0; max-width: 700px; margin-left: auto; margin-right: auto;">
+                <p style="margin: 0; color: #134e4a; font-size: 0.95rem;">
+                    <i class="fas fa-clock"></i> <strong>Note on Availability:</strong> I'm currently a dedicated student. I'm at school from <strong>7:30 AM to 7:00 PM</strong> and will reach home by <strong>8:00 PM IST</strong>. I'll respond to emails after that. Thank you for your understanding!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <i class="fas fa-shield-alt"></i> White Crocodile AI
+            </div>
+            <p>Making proactive cybersecurity accessible for every business.</p>
+            <p class="copyright">© 2023 White Crocodile AI. Founded by Shashi Vadhan Reddy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Simple Script for Smooth Scrolling -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
