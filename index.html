@@ -14,6 +14,8 @@
             --dark: #134e4a;
             --gray: #6b7280;
             --light-gray: #e5e7eb;
+            --india-saffron: #FF9933;
+            --india-green: #138808;
         }
         * {
             margin: 0;
@@ -59,6 +61,18 @@
         .logo i {
             font-size: 2rem;
         }
+        .india-badge {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(90deg, var(--india-saffron), white, var(--india-green));
+            color: var(--dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 10px;
+            border: 1px solid #e5e7eb;
+        }
         nav a {
             margin-left: 30px;
             text-decoration: none;
@@ -86,6 +100,21 @@
         .hero {
             text-align: center;
             padding: 80px 0 60px;
+            position: relative;
+        }
+        .hero-badge {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--india-saffron) 0%, white 50%, var(--india-green) 100%);
+            color: var(--dark);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--primary);
+            z-index: 2;
         }
         .hero h1 {
             font-size: 3.2rem;
@@ -192,16 +221,17 @@
         .plan-card.featured:hover {
             transform: scale(1.03) translateY(-10px);
         }
-        .plan-badge {
+        .made-in-india-badge {
             position: absolute;
             top: 20px;
             right: -30px;
-            background: var(--secondary);
-            color: white;
+            background: linear-gradient(90deg, var(--india-saffron), white, var(--india-green));
+            color: var(--dark);
             padding: 8px 35px;
             transform: rotate(45deg);
             font-size: 0.8rem;
-            font-weight: 600;
+            font-weight: 700;
+            border: 1px solid rgba(0,0,0,0.1);
         }
         .plan-icon {
             font-size: 2.8rem;
@@ -302,9 +332,20 @@
             margin-bottom: 20px;
             color: #f0fdfa;
         }
+        .indian-startup-banner {
+            background: linear-gradient(90deg, var(--india-saffron) 0%, white 50%, var(--india-green) 100%);
+            color: var(--dark);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            margin: 15px auto;
+            display: inline-block;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
         .copyright {
             color: #a7f3d0;
             font-size: 0.9rem;
+            margin-top: 15px;
         }
 
         /* Responsive Design */
@@ -315,6 +356,13 @@
             }
             nav a {
                 margin: 0 15px;
+            }
+            .hero-badge {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 0 auto 20px;
+                display: inline-block;
             }
             .hero h1 {
                 font-size: 2.5rem;
@@ -339,6 +387,9 @@
         <div class="container header-content">
             <a href="#" class="logo">
                 <i class="fas fa-shield-alt"></i> White Crocodile AI
+                <span class="india-badge">
+                    Made in India
+                </span>
             </a>
             <nav>
                 <a href="#about">About</a>
@@ -352,6 +403,9 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
+            <div class="hero-badge">
+                Made in India
+            </div>
             <h1>Enterprise Security. Made Accessible.</h1>
             <p>White Crocodile AI delivers automated, professional vulnerability scanning for businesses of all sizes. Proactive protection starts here.</p>
             <a href="#plans" class="cta-button">View Our Security Plans</a>
@@ -370,10 +424,10 @@
             </div>
             <div class="about-text">
                 <h3>Hi, I'm Shashi Vadhan Reddy</h3>
-                <p>I'm a student and entrepreneur from Telangana on a mission to make the digital world safer. While balancing a full school day in Class 9, I taught myself about cybersecurity and saw how smaller businesses often lack the resources to check their online security.</p>
-                <p>That's how <strong>White Crocodile AI</strong> began—a B2B tool I built from the ground up that automates website vulnerability scanning to give businesses clear, actionable reports. My vision is to provide enterprise-level security insights that are accessible, affordable, and easy to understand.</p>
+                <p>I'm a student and entrepreneur from <strong>Telangana, India</strong> on a mission to make the digital world safer. While balancing a full school day in Class 9, I taught myself about cybersecurity and saw how smaller businesses often lack the resources to check their online security.</p>
+                <p>That's how <strong>White Crocodile AI</strong> began—a <strong>proud Indian startup</strong> and B2B tool I built from the ground up that automates website vulnerability scanning to give businesses clear, actionable reports. My vision is to provide enterprise-level security insights that are accessible, affordable, and easy to understand.</p>
                 <div class="highlight-box">
-                    <p><i class="fas fa-quote-left"></i> I believe the best solutions come from curiosity and a willingness to start, no matter your age. This tool is just the beginning of building a more secure internet for everyone.</p>
+                    <p><i class="fas fa-quote-left"></i> I believe the best solutions come from curiosity and a willingness to start, no matter your age. This <strong>Made in India</strong> tool is just the beginning of building a more secure internet for everyone, starting from our great nation.</p>
                 </div>
             </div>
         </div>
@@ -389,6 +443,7 @@
             <div class="plans-container">
                 <!-- Plan V1 -->
                 <div class="plan-card">
+                    <div class="made-in-india-badge">Made in India</div>
                     <div class="plan-icon">
                         <i class="fas fa-search"></i>
                     </div>
@@ -401,13 +456,14 @@
                         <li><i class="fas fa-check"></i> Risk Level Assessment</li>
                         <li><i class="fas fa-check"></i> 24-Hour Turnaround</li>
                         <li><i class="fas fa-check"></i> Safe, Read-Only Process</li>
+                        <li><i class="fas fa-check"></i> <strong>Proudly Made in India</strong></li>
                     </ul>
                     <a href="#contact" class="plan-button secondary">Inquire About V1</a>
                 </div>
 
                 <!-- Plan V2 (Featured) -->
                 <div class="plan-card featured">
-                    <div class="plan-badge">MOST POPULAR</div>
+                    <div class="made-in-india-badge">Made in India</div>
                     <div class="plan-icon">
                         <i class="fas fa-tools"></i>
                     </div>
@@ -420,6 +476,7 @@
                         <li><i class="fas fa-check"></i> Technical Guidance Summary</li>
                         <li><i class="fas fa-check"></i> Priority Email Support</li>
                         <li><i class="fas fa-check"></i> Follow-up Rescan Discount</li>
+                        <li><i class="fas fa-check"></i> <strong>Indian Startup Support</strong></li>
                     </ul>
                     <a href="#contact" class="plan-button">Get a V2 Demo</a>
                 </div>
@@ -464,8 +521,11 @@
             <div class="footer-logo">
                 <i class="fas fa-shield-alt"></i> White Crocodile AI
             </div>
-            <p>Making proactive cybersecurity accessible for every business.</p>
-            <p class="copyright">© 2023 White Crocodile AI. Founded by Shashi Vadhan Reddy. All rights reserved.</p>
+            <div class="indian-startup-banner">
+                PROUD INDIAN STARTUP
+            </div>
+            <p>Making proactive cybersecurity accessible for every business, starting from India.</p>
+            <p class="copyright">© 2023 White Crocodile AI. Founded by Shashi Vadhan Reddy. All rights reserved. | Made with ❤️ in India</p>
         </div>
     </footer>
 
